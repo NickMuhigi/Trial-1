@@ -1,0 +1,21 @@
+Table locations {
+  location_id serial [pk]
+  name varchar
+  state varchar
+}
+
+Table weather_observations {
+  observation_id serial [pk]
+  location_id int [ref: > locations.location_id]
+  date date
+  min_temp float
+  max_temp float
+  rainfall float
+}
+
+Table rain_predictions {
+  prediction_id serial [pk]
+  observation_id int [ref: > weather_observations.observation_id]
+  will_it_rain boolean
+  predicted_at timestamp
+}
